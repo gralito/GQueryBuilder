@@ -8,7 +8,7 @@ class GQueryTest(unittest.TestCase):
         q = GQuery().table(('posts',)).select('name')
         query = q.gquery()
         self.assertEqual(str(query),
-                          'SELECT name FROM posts')
+                         'SELECT name FROM posts')
         
     def testSimpleQuerySelectSeveralFields(self):
         q = GQuery().table(('posts',)).select('name', 'value', 'date')
@@ -35,9 +35,10 @@ class GQueryTest(unittest.TestCase):
         self.assertEqual(str(query),
                          'SELECT name FROM posts WHERE a = :a')
         
-    # def testComplexWhereQuery(self):
-    #     q = GQuery().selct().table('posts', 'p')
-    #     q.where(dbt.build_and(dbt.build_or("a = :a", "b = :b"), "c = :c"))
-        # self.assertEqual(str(query),"""
-        #     SELECT * FROM posts as p WHERE (a = :a OR b = :b) AND c = :c""")
+    def testComplexWhereQuery(self):
+        q = GQuery().select().table(('posts', 'p'))
+        q.where(dbt.build_and(dbt.build_or("a = :a", "b = :b"), "c = :c"))
+        query = q.gquery()
+        self.assertEqual(str(query),
+                         "SELECT * FROM posts as p WHERE ((a = :a OR b = :b) AND c = :c)")
         
