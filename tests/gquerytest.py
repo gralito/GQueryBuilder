@@ -18,6 +18,7 @@ class GQueryTest(unittest.TestCase):
     
     def testSimpleQuerySelectAll(self):
         q = GQuery().table(('posts',))
+        q.select()
         query = q.gquery()
         self.assertEqual(str(query),
                          'SELECT * FROM posts')

@@ -10,10 +10,20 @@ class GQuery:
     # _limit: str
     
     def select(self, *args)->GQuery:
-        self._select = ', '.join(args)
+        print(args)
+        if args != ():
+            self._select = ', '.join(args)
+        else:
+            self._select = '*'
         return self
     
     def table(self, *args: tuple[str, ...])->GQuery:
+        """
+        table: set the working table.
+
+        Returns:
+            GQuery: returns the instance.
+        """
         result = []
         for arg in args:
             if len(arg) == 1:
@@ -21,17 +31,15 @@ class GQuery:
             else:
                 result.append(f"{arg[0]} as {arg[1]}")
         self._table = ", ".join(result)
-        print(self._table)
         return self
     
     def where(self, condition: str)->GQuery:
         self._where = condition
         return self
     
-    
     def gquery(self)->str: 
         """
-        gquery build the SQLite3 query from the GQuery object.
+        gquery: build the SQLite3 query from the GQuery object.
 
         Returns:
             str: The SQLite3 query that can be send to any ORM.
@@ -39,11 +47,9 @@ class GQuery:
         parts = []
         
         ### SELECT ### 
-        parts.append('SELECT')
-        if self._select:
+        if self._select != '':
+            parts.append('SELECT')
             parts.append(self._select)
-        else:
-            parts += ['*']
         
         ### FROM ###
         parts.append('FROM')
@@ -59,4 +65,6 @@ class GQuery:
 
 if __name__ == "__main__":
     q = GQuery().table(('posts',), ('blog', 'b'))
+    q.select()
+    
     print(q.gquery())
