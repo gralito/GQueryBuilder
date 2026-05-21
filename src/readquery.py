@@ -4,7 +4,7 @@ from src.gquery import GQuery
 class ReadQuery(GQuery):
     _select: str = "SELECT *"
     
-    def select(self, *args)->ReadQuery:
+    def select(self, *args, distinct:bool=False)->ReadQuery:
         """
         define the fields name in the SELECT query.
         if no argument is precised or if the method is
@@ -14,8 +14,10 @@ class ReadQuery(GQuery):
             ReadQuery:  the instance is returned.
                         it allows a fluent behavior.
         """
+        option = ""
+        if distinct : option = "DISTINCT "
         if args != ():
-            self._select = 'SELECT ' + ', '.join(args)
+            self._select = 'SELECT ' + option + ', '.join(args)
         return self
     
     def build_query(self)->str:
