@@ -9,4 +9,4 @@ class DeleteQuery(GQuery):
         if self._table: parts.append(self._table)
         if self._where: parts.append(self._where)
         
-        return ' '.join(parts)
+        return self._build_query(parts)

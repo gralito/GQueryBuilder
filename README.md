@@ -51,6 +51,6 @@ U -> UPDATE
 
 D -> DELETE
 -
-[ ] DELETE  
+[x] DELETE  
 [x] FROM  
 [x] WHERE  
