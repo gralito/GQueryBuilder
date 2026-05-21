@@ -18,7 +18,13 @@ class ReadQuery(GQuery):
             self._select = 'SELECT ' + ', '.join(args)
         return self
     
-    def build_query(self):
+    def build_query(self)->str:
+        """
+        build the SQLite select query using the instance attributes.
+
+        Returns:
+            str: the SQLite query, ready to use.
+        """
         parts = []
         
         parts.append(self._select)
