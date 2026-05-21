@@ -4,9 +4,6 @@ import utils.dbtools as dbt
 class GQuery:
     _table: str = ""
     _where: str = ""
-    # _group: str
-    # _order: str
-    # _limit: str
     
     def table(self, *args: tuple[str, ...])->GQuery:
         """
@@ -37,6 +34,3 @@ class GQuery:
         """
         return ' '.join(parts)
             
-
-if __name__ == "__main__":
-    pass
