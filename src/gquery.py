@@ -2,20 +2,11 @@ import utils.dbtools as dbt
 
 
 class GQuery:
-    _select: str = ""
     _table: str = ""
     _where: str = ""
     # _group: str
     # _order: str
     # _limit: str
-    
-    def select(self, *args)->GQuery:
-        print(args)
-        if args != ():
-            self._select = ', '.join(args)
-        else:
-            self._select = '*'
-        return self
     
     def table(self, *args: tuple[str, ...])->GQuery:
         """
@@ -30,11 +21,11 @@ class GQuery:
                 result.append(arg[0])
             else:
                 result.append(f"{arg[0]} as {arg[1]}")
-        self._table = ", ".join(result)
+        self._table = "FROM " + ", ".join(result)
         return self
     
     def where(self, condition: str)->GQuery:
-        self._where = condition
+        self._where = "WHERE " + condition
         return self
     
     def gquery(self)->str: 
@@ -46,25 +37,22 @@ class GQuery:
         """
         parts = []
         
-        ### SELECT ### 
-        if self._select != '':
-            parts.append('SELECT')
-            parts.append(self._select)
+        # ### SELECT ### 
+        # if self._select:
+        #     parts.append(self._select)
         
-        ### FROM ###
-        parts.append('FROM')
-        parts.append(self._table)
+        # ### FROM ###
+        # if self._table:
+        #     parts.append('FROM')
+        #     parts.append(self._table)
         
-        ### WHERE ###
-        if self._where:
-            parts.append('WHERE')
-            parts.append(self._where)
+        # ### WHERE ###
+        # if self._where:
+        #     parts.append('WHERE')
+        #     parts.append(self._where)
         
-        return ' '.join(parts)     
+        # return ' '.join(parts)     
             
 
 if __name__ == "__main__":
-    q = GQuery().table(('posts',), ('blog', 'b'))
-    q.select()
-    
-    print(q.gquery())
+    pass

@@ -9,8 +9,8 @@ NEXT ACTION
 C -> INSERT
 - 
 [ ] INSERT INTO  
-[ ] table  
-[ ] alias  
+[x] table  
+[x] alias  
 
 [ ] columns  
 [ ] VALUES  
@@ -42,8 +42,8 @@ R -> SELECT
 U -> UPDATE
 -
 [ ] UPDATE  
-[ ] table  
-[ ] alias  
+[x] table  
+[x] alias  
 
 [ ] SET  
 [ ] column  
@@ -52,5 +52,5 @@ U -> UPDATE
 D -> DELETE
 -
 [ ] DELETE  
-[ ] FROM  
-[ ] WHERE  
+[x] FROM  
+[x] WHERE  
