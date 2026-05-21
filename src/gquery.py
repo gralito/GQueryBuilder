@@ -37,21 +37,21 @@ class GQuery:
         """
         parts = []
         
-        ### SELECT ### 
-        if self._select:
-            parts.append(self._select)
+        # ### SELECT ### 
+        # if self._select:
+        #     parts.append(self._select)
         
         # ### FROM ###
         # if self._table:
         #     parts.append('FROM')
         #     parts.append(self._table)
         
-        ### WHERE ###
-        if self._where:
-            parts.append('WHERE')
-            parts.append(self._where)
+        # ### WHERE ###
+        # if self._where:
+        #     parts.append('WHERE')
+        #     parts.append(self._where)
         
-        return ' '.join(parts)     
+        # return ' '.join(parts)     
             
 
 if __name__ == "__main__":
