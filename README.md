@@ -19,7 +19,7 @@ R -> SELECT
 -
 [x] SELECT  
 [x] ALL  
-[ ] DISTINCT  
+[x] DISTINCT  
 [x] columns  
 
 [x] FROM  
