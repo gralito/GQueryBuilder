@@ -2,6 +2,7 @@ from src.gquery import GQuery
 
 
 class ReadQuery(GQuery):
+    # class used to generate a 'SELECT' query
 
     def __init__(self):
         self._select: str = "SELECT *"
@@ -12,7 +13,9 @@ class ReadQuery(GQuery):
         define the fields name in the SELECT query.
         if no argument is precised or if the method is
         not called, it will be a 'SELECT *' query.
-
+        Args:
+            (str): the queried fields.
+            distinct (bool): add a DISTINCT option to the query.
         Returns:
             ReadQuery:  the instance is returned.
                         it allows a fluent behavior.
@@ -24,18 +27,39 @@ class ReadQuery(GQuery):
         return self
     
     def options(self, **kwargs):
+        """
+        define the GROUP BY, ORDER BY and LIMIT options of the query. 
+        Args:
+            group (str): the GROUP BY expression,
+            order (str): the ORDER BY expression,
+            limit (int): the value of LIMIT integer.         
+        Returns:
+            ReadQuery: returns the instance
+        """
+        
         if 'group' in kwargs: self._options['group'] = kwargs['group']
         if 'order' in kwargs: self._options['order'] = kwargs['order']
         if 'limit' in kwargs: self._options['limit'] = kwargs['limit']
         
-    def _build_options(self):
+        return self
+        
+    def _build_options(self)->str:
+        """
+        build the options part of the SELECT query (ORDER BY, GROUP BY, LIMIT)
+
+        Returns:
+            str: the option string, ready to inject in the query
+        """
+        
         parts = []
+        
         if 'group' in self._options:
             parts.append(f"GROUP BY {self._options['group']}")
         if 'order' in self._options:
             parts.append(f"ORDER BY {self._options['order']}")
         if 'limit' in self._options:
             parts.append(f"LIMIT {self._options['limit']}")
+            
         return " ".join(parts)
     
     def build_query(self)->str:
@@ -56,4 +80,4 @@ class ReadQuery(GQuery):
             self._options = {}
                
         return self._build_query(parts)
-    
+   
