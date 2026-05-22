@@ -2,7 +2,10 @@ from src.gquery import GQuery
 
 
 class ReadQuery(GQuery):
-    _select: str = "SELECT *"
+
+    def __init__(self):
+        self._select: str = "SELECT *"
+        self._options: dict = {}
     
     def select(self, *args, distinct:bool=False)->ReadQuery:
         """
@@ -20,6 +23,21 @@ class ReadQuery(GQuery):
             self._select = 'SELECT ' + option + ', '.join(args)
         return self
     
+    def options(self, **kwargs):
+        if 'group' in kwargs: self._options['group'] = kwargs['group']
+        if 'order' in kwargs: self._options['order'] = kwargs['order']
+        if 'limit' in kwargs: self._options['limit'] = kwargs['limit']
+        
+    def _build_options(self):
+        parts = []
+        if 'group' in self._options:
+            parts.append(f"GROUP BY {self._options['group']}")
+        if 'order' in self._options:
+            parts.append(f"ORDER BY {self._options['order']}")
+        if 'limit' in self._options:
+            parts.append(f"LIMIT {self._options['limit']}")
+        return " ".join(parts)
+    
     def build_query(self)->str:
         """
         build the SQLite select query using the instance attributes.
@@ -28,9 +46,14 @@ class ReadQuery(GQuery):
             str: the SQLite query, ready to use.
         """
         parts = []
-        
+                
         parts.append(self._select)
         if self._table: parts.append(self._table)
         if self._where: parts.append(self._where)
-        
+        if self._options != {}:
+            options = self._build_options()
+            parts.append(options)
+            self._options = {}
+               
         return self._build_query(parts)
+    

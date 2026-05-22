@@ -1,7 +1,6 @@
 # GQuery package
 
 NEXT ACTION  
-=> refactor (classes)  
 => documentation  
 
 ## BASIC CRUD DESIGN
