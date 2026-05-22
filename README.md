@@ -14,28 +14,16 @@ C -> INSERT
 [ ] columns  
 [ ] VALUES  
 
-R -> SELECT
--
+R -> SELECT  
 [x] SELECT  
 [x] ALL  
 [x] DISTINCT  
-[x] columns  
-
 [x] FROM  
-[x] tables  
 [x] alias
-
 [x] WHERE  
-[x] conditions
-
-[ ] GROUP BY  
-[ ] expressions
-
-[ ] ORDER BY  
-[ ] expressions
-
-[ ] LIMIT  
-[ ] expression
+[x] GROUP BY  
+[x] ORDER BY  
+[x] LIMIT  
 
 
 U -> UPDATE
