@@ -2,7 +2,7 @@ from src.gquery import GQuery
 
 
 class ReadQuery(GQuery):
-    # class used to generate a 'SELECT' query
+    """class used to generate a 'SELECT' query"""
 
     def __init__(self):
         self._select: str = "SELECT *"
@@ -14,8 +14,8 @@ class ReadQuery(GQuery):
         if no argument is precised or if the method is
         not called, it will be a 'SELECT *' query.
         Args:
-            (str): the queried fields.
-            distinct (bool): add a DISTINCT option to the query.
+            *args (str): the queried fields.
+            distinct (bool, optional): add a DISTINCT option to the query.
         Returns:
             ReadQuery:  the instance is returned.
                         it allows a fluent behavior.
@@ -30,9 +30,9 @@ class ReadQuery(GQuery):
         """
         define the GROUP BY, ORDER BY and LIMIT options of the query. 
         Args:
-            group (str): the GROUP BY expression,
-            order (str): the ORDER BY expression,
-            limit (int): the value of LIMIT integer.         
+            group (str, optional): the GROUP BY expression,
+            order (str, optional): the ORDER BY expression,
+            limit (int, optional): the value of LIMIT integer.         
         Returns:
             ReadQuery: returns the instance
         """
@@ -64,7 +64,7 @@ class ReadQuery(GQuery):
     
     def build_query(self)->str:
         """
-        build the SQLite select query using the instance attributes.
+        build the SQLite SELECT query using the instance attributes.
 
         Returns:
             str: the SQLite query, ready to use.

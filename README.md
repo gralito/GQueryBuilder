@@ -1,7 +1,15 @@
-# GQuery package
+# GQueryBuilder v1.0.0
+
+## Summary
+1. Presentation
+2. Features
+3. How to use
+
+
 
 NEXT ACTION  
 => documentation  
+=> update README.md
 
 ## BASIC CRUD DESIGN
 
@@ -15,6 +23,7 @@ C -> INSERT
 [ ] VALUES  
 
 R -> SELECT  
+-
 [x] SELECT  
 [x] ALL  
 [x] DISTINCT  
