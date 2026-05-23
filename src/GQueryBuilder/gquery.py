@@ -24,7 +24,7 @@ class GQuery:
                 result.append(arg[0])
             else:
                 result.append(f"{arg[0]} as {arg[1]}")
-        self._table = "FROM " + ", ".join(result)
+        self._table = ", ".join(result)
         return self
     
     def where(self, condition: str)->GQuery:

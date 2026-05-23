@@ -15,12 +15,12 @@ NEXT ACTION
 
 C -> INSERT
 - 
-[ ] INSERT INTO  
+[x] INSERT INTO  
 [x] table  
 [x] alias  
-
-[ ] columns  
-[ ] VALUES  
+[x] columns  
+[x] VALUES  
+[x] DEFAULT VALUES  
 
 R -> SELECT  
 -

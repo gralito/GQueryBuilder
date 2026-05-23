@@ -11,7 +11,7 @@ class GQueryTest(unittest.TestCase):
     def test_simple_alias(self):
         q = GQuery(self.database).table(('posts', 'p'))
         self.assertEqual(str(q._table),
-                         'FROM posts as p')
+                         'posts as p')
     
     def test_simple_where(self):
         q = GQuery(self.database).where('a = :a')

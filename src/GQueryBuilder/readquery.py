@@ -73,7 +73,7 @@ class ReadQuery(GQuery):
         parts = []
                 
         parts.append(self._select)
-        if self._table: parts.append(self._table)
+        if self._table: parts.append(f"FROM {self._table}")
         if self._where: parts.append(self._where)
         if self._options != {}:
             options = self._build_options()
