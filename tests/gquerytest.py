@@ -25,4 +25,4 @@ class GQueryTest(unittest.TestCase):
         
     def test_set_database(self):
         q = GQuery(self.database)
-        self.assertEqual(q.database, "db.sqlite3")       
+        self.assertEqual(q.database, "db.sqlite3")

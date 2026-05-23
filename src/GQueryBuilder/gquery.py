@@ -8,8 +8,8 @@ class GQuery:
     def __init__(self, database):    
         self._table: str = ""
         self._where: str = ""
-        self.database = database
         self._query = ""
+        self.database = database
     
     def table(self, *args: tuple[str, ...])->GQuery:
         """
