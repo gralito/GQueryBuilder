@@ -1,6 +1,6 @@
 import unittest
 
-from src.updatequery import UpdateQuery
+from src.GQueryBuilder.updatequery import UpdateQuery
 
 
 class UpdateQueryTest(unittest.TestCase):
