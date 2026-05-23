@@ -4,7 +4,8 @@ from src.GQueryBuilder.gquery import GQuery
 class ReadQuery(GQuery):
     """class used to generate a 'SELECT' query"""
 
-    def __init__(self):
+    def __init__(self, database):
+        super().__init__(database)
         self._select: str = "SELECT *"
         self._options: dict = {}
     
