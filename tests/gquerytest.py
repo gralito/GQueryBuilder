@@ -17,7 +17,7 @@ class GQueryTest(unittest.TestCase):
                          'WHERE a = :a')
         
     def test_complex_where(self):
-        q = GQuery().where(dbt.build_and(dbt.build_or("a = :a", "b = :b"), "c = :c"))
+        q = GQuery().where(dbt.and_(dbt.or_("a = :a", "b = :b"), "c = :c"))
         self.assertEqual(str(q._where),
                          "WHERE ((a = :a OR b = :b) AND c = :c)")
         
