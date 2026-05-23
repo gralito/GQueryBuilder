@@ -1,6 +1,7 @@
 import unittest
-from src.gquery import GQuery
-import utils.dbtools as dbt
+
+from src.GQueryBuilder.gquery import GQuery
+import src.GQueryBuilder.utils.dbtools as dbt
 
 
 class GQueryTest(unittest.TestCase):

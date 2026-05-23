@@ -1,6 +1,6 @@
 import unittest
 
-import utils.dbtools as dbt
+import src.GQueryBuilder.utils.dbtools as dbt
 
 class DbtoolsTest(unittest.TestCase):
     def testOr(self):

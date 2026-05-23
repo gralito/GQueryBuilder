@@ -1,6 +1,6 @@
 import unittest
 
-from src.deletequery import DeleteQuery
+from src.GQueryBuilder.deletequery import DeleteQuery
 
 
 class DeleteQueryTest(unittest.TestCase):

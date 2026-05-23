@@ -1,4 +1,4 @@
-from src.gquery import GQuery
+from src.GQueryBuilder.gquery import GQuery
 
 
 class ReadQuery(GQuery):

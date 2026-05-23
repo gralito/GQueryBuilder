@@ -1,4 +1,4 @@
-import utils.dbtools as dbt
+import src.GQueryBuilder.utils.dbtools as dbt
 
 
 class GQuery:

@@ -1,6 +1,6 @@
 import unittest
 
-from src.readquery import ReadQuery
+from src.GQueryBuilder.readquery import ReadQuery
 
 
 class ReadQueryTest(unittest.TestCase):

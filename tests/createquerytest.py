@@ -1,6 +1,6 @@
 import unittest
 
-from src.createquery import CreateQuery
+from src.GQueryBuilder.createquery import CreateQuery
 
 
 class CreateQueryTest(unittest.TestCase):
