@@ -1,3 +1,5 @@
+import sqlite3
+
 import src.GQueryBuilder.utils.dbtools as dbt
 
 
@@ -7,6 +9,7 @@ class GQuery:
         self._table: str = ""
         self._where: str = ""
         self.database = database
+        self._query = ""
     
     def table(self, *args: tuple[str, ...])->GQuery:
         """
@@ -35,18 +38,18 @@ class GQuery:
         Returns:
             str: The SQLite3 query that can be send to any ORM.
         """
-        return ' '.join(parts)
+        self._query = ' '.join(parts)
     
-    @classmethod
-    def run(query: str, data=None, receive=False):
-        # TO IMPLEMENT
-        conn = sqlite3.connect("tasks.db")
-        cursor = conn.cursor()
-        if data:
-            cursor.execute(query, data)
-        else:
-            cursor.execute(query)
-        if receive:
-            return cursor.fetchall()
-        else:
-            conn.commit()        
+    # @classmethod
+    # def run(query: str, data=None, receive=False):
+    #     # TO IMPLEMENT
+    #     conn = sqlite3.connect("tasks.db")
+    #     cursor = conn.cursor()
+    #     if data:
+    #         cursor.execute(query, data)
+    #     else:
+    #         cursor.execute(query)
+    #     if receive:
+    #         return cursor.fetchall()
+    #     else:
+    #         conn.commit()        

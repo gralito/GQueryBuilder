@@ -78,7 +78,7 @@ class ReadQuery(GQuery):
         if self._options != {}:
             options = self._build_options()
             parts.append(options)
-            self._options = {}
-               
-        return self._build_query(parts)
-   
+            self._options = {}       
+        self._build_query(parts)
+        
+        return self
