@@ -5,12 +5,6 @@
 2. Features
 3. How to use
 
-
-
-NEXT ACTION  
-=> documentation  
-=> update README.md
-
 ## BASIC CRUD DESIGN
 
 C -> INSERT
@@ -37,13 +31,11 @@ R -> SELECT
 
 U -> UPDATE
 -
-[ ] UPDATE  
+[x] UPDATE  
 [x] table  
 [x] alias  
-
-[ ] SET  
-[ ] column  
-[ ] expression  
+[x] SET  
+[x] expression  
 
 D -> DELETE
 -

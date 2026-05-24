@@ -3,7 +3,7 @@ from src.GQueryBuilder.gquery import GQuery
 
 class CreateQuery(GQuery):
     def __init__(self, database):
-        self.database = database
+        super().__init__(database)
         self._values = ""
         self._target = ""
     
