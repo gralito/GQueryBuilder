@@ -1,12 +1,13 @@
 import unittest
 
 from src.GQueryBuilder.gquery import GQuery
+from src.GQueryBuilder.readquery import ReadQuery
 import src.GQueryBuilder.utils.dbtools as dbt
 
 
 class GQueryTest(unittest.TestCase):
     def setUp(self):
-        self.database = "db.sqlite3"
+        self.database = "/home/gralito/repos/GQueryBuilder/tests/test_db.sqlite"
     
     def test_simple_alias(self):
         q = GQuery(self.database).table(('posts', 'p'))
@@ -25,4 +26,11 @@ class GQueryTest(unittest.TestCase):
         
     def test_set_database(self):
         q = GQuery(self.database)
-        self.assertEqual(q.database, "db.sqlite3")
+        self.assertEqual(q.database, self.database)
+        
+    def test_run_method(self):
+        q = GQuery(self.database)
+        q._query = "SELECT name FROM users WHERE id=12"
+        response = q.run(True)
+        self.assertEqual(response,
+                         [('gralito',)])

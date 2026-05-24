@@ -33,3 +33,4 @@ class UpdateQuery(GQuery):
         if self._where: parts.append(self._where)
         
         self._build_query(parts)
+        return self

@@ -6,7 +6,8 @@ from src.GQueryBuilder.readquery import ReadQuery
 class ReadQueryTest(unittest.TestCase):
     
     def setUp(self):
-        self.database = "db.sqlite3"
+        self.database = "/home/gralito/repos/GQueryBuilder/tests/test_db.sqlite"
+        self.query = ReadQuery(self.database)
     
     def test_simple_select_query(self):
         q = ReadQuery(self.database)

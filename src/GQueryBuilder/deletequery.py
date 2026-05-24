@@ -19,4 +19,5 @@ class DeleteQuery(GQuery):
         if self._table: parts.append(f"FROM {self._table}")
         if self._where: parts.append(self._where)
         
-        return self._build_query(parts)
+        self._build_query(parts)
+        return self

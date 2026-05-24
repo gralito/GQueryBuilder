@@ -30,4 +30,5 @@ class CreateQuery(GQuery):
             parts.append("DEFAULT VALUES")
         
         self._build_query(parts)
+        return self
              

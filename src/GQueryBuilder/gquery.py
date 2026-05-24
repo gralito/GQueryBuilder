@@ -40,16 +40,15 @@ class GQuery:
         """
         self._query = ' '.join(parts)
     
-    # @classmethod
-    # def run(query: str, data=None, receive=False):
-    #     # TO IMPLEMENT
-    #     conn = sqlite3.connect("tasks.db")
-    #     cursor = conn.cursor()
-    #     if data:
-    #         cursor.execute(query, data)
-    #     else:
-    #         cursor.execute(query)
-    #     if receive:
-    #         return cursor.fetchall()
-    #     else:
-    #         conn.commit()        
+    def run(self, receive=False):
+        conn = sqlite3.connect(self.database)
+        cursor = conn.cursor()
+        print(cursor.connection)
+        try:
+            cursor.execute(self._query)
+            if receive:
+                return cursor.fetchall()
+            else:
+                conn.commit()
+        except:
+            conn.rollback()

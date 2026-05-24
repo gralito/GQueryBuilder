@@ -1,12 +1,14 @@
 import unittest
 
 from src.GQueryBuilder.createquery import CreateQuery
+from src.GQueryBuilder.gquery import GQuery
 
 
 class CreateQueryTest(unittest.TestCase):
     
     def setUp(self):
-        self.query = CreateQuery('db.sqlite3')
+        self.database = "/home/gralito/repos/GQueryBuilder/tests/test_db.sqlite"
+        self.query = CreateQuery(self.database)
     
     def test_simple_query(self):
         self.query.table(('posts',))
@@ -29,3 +31,16 @@ class CreateQueryTest(unittest.TestCase):
         self.query.build_query()
         self.assertEqual(self.query._query,
                          "INSERT INTO posts (name) DEFAULT VALUES")
+        
+    def test_run_method(self):
+        self.query.table(('users',))
+        self.query.target(['name', 'age', 'city'])
+        self.query.values(['touti', 6, 'saintois'])
+        self.query.build_query().run()
+        
+        check = GQuery(self.database)
+        check._query = "SELECT DISTINCT age, city FROM users WHERE name='touti'"
+        check_response = check.run(True)
+        
+        self.assertEqual(check_response,
+                         [(6, 'saintois')])
