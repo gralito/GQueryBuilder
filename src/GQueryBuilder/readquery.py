@@ -63,7 +63,7 @@ class ReadQuery(GQuery):
             
         return " ".join(parts)
     
-    def build_query(self)->str:
+    def build_query(self):
         """
         build the SQLite SELECT query using the instance attributes.
 
