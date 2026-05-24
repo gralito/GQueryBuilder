@@ -13,7 +13,7 @@ class UpdateQuery(GQuery):
                 str_value = f"'{value}'"
             else :
                 str_value = f"{value}"
-            result.append(f"{key} = {str_value}")
+            result.append(f"{key}={str_value}")
         self._expressions = ", ".join(result)
         return self
         
