@@ -1,6 +1,7 @@
 import unittest
 
 from src.GQueryBuilder.deletequery import DeleteQuery
+from src.GQueryBuilder.gquery import GQuery
 
 
 class DeleteQueryTest(unittest.TestCase):
@@ -26,3 +27,18 @@ class DeleteQueryTest(unittest.TestCase):
         q.where("name='ju'").build_query()
         self.assertEqual(q._query,
                          "DELETE FROM posts as p WHERE name='ju'")
+        
+    def test_run_method(self):
+        pre_req = GQuery(self.database)
+        pre_req._query = "INSERT INTO users ('name', 'age', 'city') VALUES ('souris', 3, 'saintois')"
+        pre_req.run()
+        
+        q = DeleteQuery(self.database)
+        q.table(('users',)).where("name='souris'")
+        q.build_query().run()
+        
+        post_req = GQuery(self.database)
+        post_req._query = "SELECT * FROM users WHERE name='souris'"
+        repsonse = post_req.run(True)
+        
+        self.assertEqual(repsonse, [])
