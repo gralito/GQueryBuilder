@@ -1,9 +1,17 @@
 # GQueryBuilder v1.0.0
 
+GQueryBuilder is a Python library that allows easy SQLite3 Queries building & executing.  
+This package helps developpers who do not master the SQLite syntax.
+GQueryBuilder transforms GQuery objects into SQLite3 queries.
+
 ## Summary
 1. Presentation
 2. Features
 3. How to use
+
+
+## 1. Presentation
+
 
 ## BASIC CRUD DESIGN
 
