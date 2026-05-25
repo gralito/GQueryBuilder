@@ -43,7 +43,6 @@ class GQuery:
     def run(self, receive=False):
         conn = sqlite3.connect(self.database)
         cursor = conn.cursor()
-        print(cursor.connection)
         try:
             cursor.execute(self._query)
             if receive:
