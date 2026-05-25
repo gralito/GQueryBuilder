@@ -7,8 +7,22 @@ build-backend = "setuptools.build_meta"
 name = "GQueryBuilder"
 version = "0.0.1"
 authors = [
-    {
-        name="gralito",
-        email="gralito@protonmail.com"
-        }
+    { name="gralito", email="gralito@protonmail.com" }
 ]
+description = "A simple package to create and execute SQLite queries"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/gralito/GQueryBuilder"
+"Bug Tracker" = "https://github.com/gralito/GQueryBuilder/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["GQueryBuilder"]
