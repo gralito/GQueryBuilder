@@ -1,0 +1,14 @@
+# pyproject.toml
+[build-system]
+requires = ["setuptools >= 82.0.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "GQueryBuilder"
+version = "0.0.1"
+authors = [
+    {
+        name="gralito",
+        email="gralito@protonmail.com"
+        }
+]
