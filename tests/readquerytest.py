@@ -75,3 +75,11 @@ class ReadQueryTest(unittest.TestCase):
         q.options(limit=5, order='city').build_query()
         self.assertEqual(q._query,
                          "SELECT name, age FROM posts as p, articles WHERE city='NY' ORDER BY city LIMIT 5")
+        
+    def test_run_method(self):
+        self.query.select('name', 'age').table(('users',))
+        self.query.where("city='paris'")
+        response = self.query.build_query().run(True)
+        
+        self.assertEqual(response,
+                         [('jacques2', 29), ('pierrot', 19)])
