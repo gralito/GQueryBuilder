@@ -30,11 +30,11 @@ class CreateQuery(GQuery):
             
     def values(self, values: [])->CreateQuery:
         """
-        Define the values to give to the new entry.  
+        define the values to give to the new entry.  
         Those values are stored in the `_values` attribute.
 
         Args:
-            values (Array): The values are provided as an array containing them.
+            values (Array): the values are provided as an array containing them.
 
         Returns:
             CreateQuery: return the instance, allowing fluent coding.
@@ -64,4 +64,3 @@ class CreateQuery(GQuery):
         
         self._build_query(parts)
         return self
-             

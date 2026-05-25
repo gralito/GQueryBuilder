@@ -2,11 +2,26 @@ from src.GQueryBuilder.gquery import GQuery
 
 
 class UpdateQuery(GQuery):
+    """
+    this class represents a `UPDATE` query
+
+    Attributes:
+        _expressions (str): the modifications to bring to the table, the SET part of the query.
+    """
     def __init__(self, database):
         super().__init__(database)
         self._expressions = ""
     
     def expressions(self, expressions: dict):
+        """
+        define the modifications to bring to the table.
+
+        Args:
+            expressions (dict): a dictionnary where each key is the field to modify and the value is the new value.
+
+        Returns:
+            UpdateQuery: return the instance, allowing fluent coding.
+        """
         result = []
         for key, value in expressions.items():
             if type(value) == str:
@@ -16,14 +31,13 @@ class UpdateQuery(GQuery):
             result.append(f"{key}={str_value}")
         self._expressions = ", ".join(result)
         return self
-        
-    
+         
     def build_query(self)->str:
         """
-        build the SQLite SELECT query using the instance attributes.
+        build the SQLite query from the UpdateQuery object.
 
         Returns:
-            str: the SQLite query, ready to use.
+            UpdateQuery: return the instance, allowing fluent coding.
         """
         parts = []
         parts.append("UPDATE")
