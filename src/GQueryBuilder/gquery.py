@@ -1,6 +1,7 @@
 import sqlite3
 
-import src.GQueryBuilder.utils.dbtools as dbt
+# import src.GQueryBuilder.utils.dbtools as dbt
+import src.GQueryBuilder.utils.dbase as utils
 
 
 class GQuery:
@@ -63,23 +64,11 @@ class GQuery:
         """
         self._query = ' '.join(parts)
     
-    def run(self, receive=False):
+    def run(self, receive: bool):
         """
-        create a connection to the database in the database attribute and send the built query.  
+        run the query to the database
 
-        Args:
-            receive (bool, optional): tell if data has to be received (a SELECT query by example).
-
-        Returns:
-            Array | None: the values returned by the SQLite query or nothing.
+        Attributes:
+            receive (bool, optional): precise if data will be received or not. Defaults to False.
         """
-        conn = sqlite3.connect(self.database)
-        cursor = conn.cursor()
-        try:
-            cursor.execute(self._query)
-            if receive:
-                return cursor.fetchall()
-            else:
-                conn.commit()
-        except:
-            conn.rollback()
+        utils.run(self.database, self._query, receive)
