@@ -1,7 +1,7 @@
 import sqlite3
 
 # import src.GQueryBuilder.utils.dbtools as dbt
-import src.GQueryBuilder.utils.dbase as utils
+from src.GQueryBuilder.utils.dbase import run as db_run
 
 
 class GQuery:
@@ -63,12 +63,13 @@ class GQuery:
             parts (str[]): the parts of the query in an array, sorted by the subclass method build_query().
         """
         self._query = ' '.join(parts)
+        return self
     
-    def run(self, receive: bool):
+    def run(self, receive: bool = False):
         """
         run the query to the database
 
         Attributes:
             receive (bool, optional): precise if data will be received or not. Defaults to False.
         """
-        utils.run(self.database, self._query, receive)
+        return db_run(self.database, self._query, receive)

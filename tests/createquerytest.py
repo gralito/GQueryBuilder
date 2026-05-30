@@ -40,7 +40,8 @@ class CreateQueryTest(unittest.TestCase):
         
         check = GQuery(self.database)
         check._query = "SELECT DISTINCT age, city FROM users WHERE name='touti'"
-        check_response = check.run(True)
+        check_response = check.run(receive=True)
         
         self.assertEqual(check_response,
                          [(6, 'saintois')])
+        
