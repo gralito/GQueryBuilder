@@ -47,7 +47,7 @@ Now, let's give the differents 'arguments' to this request.
 You need to read the 'name' field in the 'users' table.  
 
     my_request.select('name')
-    my_request.where(('users',))
+    my_request.table(('users',))
 
 A builder translates your query into SQLite language :  
     
