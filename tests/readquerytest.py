@@ -79,7 +79,7 @@ class ReadQueryTest(unittest.TestCase):
     def test_run_method(self):
         self.query.select('name', 'age').table(('users',))
         self.query.where("city='paris'")
-        response = self.query.build_query().run(True)
+        response = self.query.build_query().run(receive=True)
         
         self.assertEqual(response,
                          [('jacques2', 29), ('pierrot', 19)])
