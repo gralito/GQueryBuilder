@@ -3,7 +3,7 @@ from src.GQueryBuilder.gquery import GQuery
 
 class CreateQuery(GQuery):
     """
-    this class represents a `INSERT INTO` query.
+    this class represents an`INSERT INTO` query.
 
     Attributes:
         _target (str): the fields names, separated by a comma.
