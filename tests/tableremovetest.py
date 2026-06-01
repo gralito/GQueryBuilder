@@ -13,3 +13,11 @@ class TableRemoveTest(unittest.TestCase):
         q.build_query()
         self.assertEqual(q._query,
                          'DROP TABLE users')
+        
+    def test_if_exists_remove(self):
+        q = TableRemove(self.database,
+                        if_exists=True)
+        q.name('users')
+        q.build_query()
+        self.assertEqual(q._query,
+                         'DROP TABLE IF EXISTS users')
