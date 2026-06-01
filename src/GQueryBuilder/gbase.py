@@ -10,7 +10,32 @@ class GBase:
     def set_auto_db_name(self):
         return "-".join(self.path.split('/')[-1].split('.')[:-1])
         
-
+    ### TABLES ###
+    def add_table(self):
+        pass
+    
+    def remove_table(self):
+        pass
+    
+    def update_table(self):
+        pass
+    
+    
+    ### ENTRIES ###
+    def get_entries(self):
+        pass
+    
+    def get_entry(self):
+        pass
+    
+    def add_entry(self):
+        pass
+    
+    def remove_entry(self):
+        pass
+    
+    def update_entry(self):
+        pass
 
 if __name__ == '__main__':
     db1 = GBase("/home/gralito/repos/GQueryBuilder/tests/test_db.sqlite")
