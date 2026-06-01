@@ -9,9 +9,10 @@ class EntryQuery(GQuery):
         _table (str): the name of the working table in the database.
         _where (str): the condition to precise the query.
     """
-    
-    self._table: str = ""
-    self._where: str = ""
+    def __init__(self, database):
+        super().__init__(database=database)
+        self._table: str = ""
+        self._where: str = ""
     
     def table(self, *args: tuple[str, ...])->EntryQuery:
         """
