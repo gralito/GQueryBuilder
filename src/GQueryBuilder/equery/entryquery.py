@@ -9,11 +9,12 @@ class EntryQuery(GQuery):
         _table (str): the name of the working table in the database.
         _where (str): the condition to precise the query.
     """
+    def __init__(self, database):
+        super().__init__(database=database)
+        self._table: str = ""
+        self._where: str = ""
     
-    self._table: str = ""
-    self._where: str = ""
-    
-    def table(self, *args: tuple[str, ...])->GQuery:
+    def table(self, *args: tuple[str, ...])->EntryQuery:
         """
         set the working table(s).
 
@@ -21,7 +22,7 @@ class EntryQuery(GQuery):
             *args (tuple[str, ...]): tuples, each one contains the name of the table and eventually an alias.
         
         Returns:
-            GQuery: return the instance, allowing fluent coding.
+            EntryQuery: return the instance, allowing fluent coding.
         """
         result = []
         
@@ -34,7 +35,7 @@ class EntryQuery(GQuery):
         
         return self
     
-    def where(self, condition: str)->GQuery:
+    def where(self, condition: str)->EntryQuery:
         """
         define a condition to precise the query, the `WHERE` part of a query.
         
@@ -42,7 +43,7 @@ class EntryQuery(GQuery):
             condition (str): a logic statement like `"name = <value>"`. can be a complex condition.
 
         Returns:
-            GQuery: return the instance, allowing fluent coding.
+            EntryQuery: return the instance, allowing fluent coding.
         """
         self._where = "WHERE " + condition
         
