@@ -11,6 +11,10 @@ class GQuery:
     Attributes:
         _query (str): the SQLite query sent to the database by the `run()` method.
         database (str): the path to the working database.
+        
+    Methods:
+        _build_query (GQuery): build the SQLite query.
+        run (str | None): run the SQLite query.
     """
     def __init__(self, database):    
         
@@ -19,17 +23,19 @@ class GQuery:
     
     
     
-    def _build_query(self, parts)->str: 
+    def _build_query(self, parts)->GQuery: 
         """
         build the SQLite query from the parts provided by the subclass instance. called in the `build_query()` method of the subclass.
 
         Args:
             parts (str[]): the parts of the query in an array, sorted by the subclass method build_query().
+        Returns:
+            GQuery: the instance.
         """
         self._query = ' '.join(parts)
         return self
     
-    def run(self, receive: bool = False):
+    def run(self, receive: bool = False)->str | None:
         """
         run the query to the database
 
