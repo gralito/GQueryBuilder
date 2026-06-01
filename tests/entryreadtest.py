@@ -3,7 +3,7 @@ import unittest
 from src.GQueryBuilder.equery.entryread import EntryRead
 
 
-class ReadQueryTest(unittest.TestCase):
+class EntryReadTest(unittest.TestCase):
     
     def setUp(self):
         self.database = "/home/gralito/repos/GQueryBuilder/tests/test_db.sqlite"
