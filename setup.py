@@ -1,4 +1,6 @@
 import setuptools
 
 
-setuptools.setup()
+setuptools.setup(
+    packages=['GQueryBuilder', 'GQueryBuilder.equery', 'GQueryBUilder.tquery', 'GQuerybuilder.utils']
+)
