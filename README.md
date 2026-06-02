@@ -57,49 +57,97 @@ A builder translates your query into SQLite language :
 
 ### Just run it
 
-    my_data = my_request.run()
+    my_data = my_request.run(receive=True)
 
 
-## 3. Features
-
-This library features basic CRUD operations:  
+## 3. Features  
 
 ### The parent class -> `GQuery`
 
+**Attributes**  
+`_query`  
+`database`  
+**Methods**  
+`_build_query()`  
+`run()`  
+
 This is the parent class and should not be used directly.  
-It contains attributes and methods shared by children class (that  
+It contains attributes and methods shared by children classes (that  
 means common SQLite elements to different kinds of requests.)  
 
 This class has 2 directs children classes :  
 - `TableQuery` handles SQLite queries concerning tables management.  
 - `EntryQuery` handles SQLite queries concerning the data management.
 
-#### Table Queries
----
-##### 1. TableCreate
+### `TableQuery`
 
+**Attributes**  
+`_name`  
+**Methods**  
+`name()`  
 
+#### 1. TableCreate
 
-##### 2. TableRemove
+**Attributes**  
+`_name`  
+`_fields`  
 
+**Methods**  
+`add_field()`  
+`_build_fields()`  
+`build_query()`  
 
+#### 2. TableRemove
 
-##### 3. TableUpdate
+**Attributes**  
+`if_exists`
+
+**Methods**  
+`build_query()`  
+
+#### 3. TableUpdate
 
 *(coming soon)*
 
-### Create -> `CreateQuery`
----
-This class implements a INSERT query.
+### `EntryQuery`
 
-### Read -> `ReadQuery`
----
-This class implements a SELECT query.
+**Attributes**  
+`_table`  
+`_where`  
+**Methods**  
+`table()`  
+`where()`  
 
-### Update -> `UpdateQuery`
----
-This class implements an UPDATE query.
+#### `EntryCreate`
 
-### Delete -> `DeleteQuery`
----
-This class implements a DELETE query.
+**Attributes**  
+`_target`  
+`_values`  
+**Methods**  
+`target()`  
+`values()`  
+`build_query()`  
+
+#### `EntryRead`
+
+**Attributes**  
+`_select`  
+`_options`  
+**Methods**  
+`select()`  
+`options()`  
+`_build_options()`  
+`build_query()`  
+
+#### `EntryRemove`
+
+**Methods**  
+`build_query()`  
+
+#### `EntryUpdate`
+
+**Attributes**  
+`_expressions`  
+**Methods**  
+`expressions()`  
+`build_query()`  
