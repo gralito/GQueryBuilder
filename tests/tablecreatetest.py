@@ -20,3 +20,12 @@ class TableCreateTest(unittest.TestCase):
         q.build_query()
         self.assertEqual(q._query,
                          'CREATE TABLE users (username TEXT, age INTEGER)')
+    
+    def test_add_fields_with_options(self):
+        q = TableCreate(self.database, 'users')
+        q.add_field('username', 'TEXT', not_null=True,unique=True)
+        q.add_field('age', 'INTEGER', not_null=True,default_value='18')
+        q.build_query()
+        
+        self.assertEqual(q._query,
+                         "CREATE TABLE users (username TEXT NOT NULL UNIQUE, age INTEGER NOT NULL DEFAULT 18)")
