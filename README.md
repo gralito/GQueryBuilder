@@ -1,8 +1,8 @@
-# GQueryBuilder v0.0.1
+# GQueryBuilder v1.0.0
 
 GQueryBuilder is a Python package that allows easy SQLite3 Queries building & executing.  
 This package helps developpers who do not master the SQLite syntax.
-GQueryBuilder transforms GQuery objects into SQLite3 queries.
+GQueryBuilder transforms python objects into SQLite3 queries and can execute them.
 
 ## Summary
 1. Presentation
@@ -17,7 +17,7 @@ It is designed for developpers who did not, and do no want to, learn the full SQ
 
 It's 'Python friendly' :  
 You create an object with the request parameters, it has a `run()` method and tadam !  
-You have your SQLite operation.
+You have your SQLite statement, readu to execute.
 
 This package is only meant to be used with SQLite3 databases only (for the moment)
 
@@ -33,15 +33,15 @@ Open a terminal window and run `pip install GQueryBuiler`
 ### Create your Query
 
 In this case, you just need to read data from the database.  
-Let's just create a ReadQuery instance.
+Let's just create a EntryRead instance.
 
 First, you need to import it :  
 
-    from gquerybuilder.readquery import ReadQuery
+    from gquerybuilder.equery.entryread import EntryRead
 
 and create an instance of the class (it requires a string argument : the path to your database)  
 
-    my_request = ReadQuery("path_to_database")
+    my_request = EntryRead("path_to_database")
 
 Now, let's give the differents 'arguments' to this request.  
 You need to read the 'name' field in the 'users' table.  
@@ -69,6 +69,24 @@ This library features basic CRUD operations:
 This is the parent class and should not be used directly.  
 It contains attributes and methods shared by children class (that  
 means common SQLite elements to different kinds of requests.)  
+
+This class has 2 directs children classes :  
+- `TableQuery` handles SQLite queries concerning tables management.  
+- `EntryQuery` handles SQLite queries concerning the data management.
+
+#### Table Queries
+---
+##### 1. TableCreate
+
+
+
+##### 2. TableRemove
+
+
+
+##### 3. TableUpdate
+
+*(coming soon)*
 
 ### Create -> `CreateQuery`
 ---
