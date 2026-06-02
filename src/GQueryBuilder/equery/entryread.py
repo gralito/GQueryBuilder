@@ -1,25 +1,33 @@
-from src.GQueryBuilder.gquery import GQuery
+from src.GQueryBuilder.equery.entryquery import EntryQuery
 
 
-class ReadQuery(GQuery):
-    """class used to generate a 'SELECT' query"""
+class EntryRead(EntryQuery):
+    """
+    this class represents a `SELECT` query.
+    
+    Attributes:
+        _select (str): the SELECT component of the query (`SELECT *` by default)
+        _options (dict): the query's options (  
+            `group=<field>` -> GROUP BY  
+            `order=<field>` -> ORDER BY  
+            `limit=<int>` -> LIMIT )
+        """
 
     def __init__(self, database):
         super().__init__(database)
         self._select: str = "SELECT *"
         self._options: dict = {}
     
-    def select(self, *args, distinct:bool=False)->ReadQuery:
+    def select(self, *args, distinct:bool=False)->EntryRead:
         """
         define the fields name in the SELECT query.
-        if no argument is precised or if the method is
-        not called, it will be a 'SELECT *' query.
+        if no argument is provided or if the method is not called, it will be a 'SELECT *' query.
+
         Args:
             *args (str): the queried fields.
-            distinct (bool, optional): add a DISTINCT option to the query.
+            distinct (bool, optional): add a DISTINCT option to the query (set to False by default).
         Returns:
-            ReadQuery:  the instance is returned.
-                        it allows a fluent behavior.
+            EntryRead:  return the instance, allowing fluent coding.
         """
         option = ""
         if distinct : option = "DISTINCT "
@@ -27,15 +35,17 @@ class ReadQuery(GQuery):
             self._select = 'SELECT ' + option + ', '.join(args)
         return self
     
-    def options(self, **kwargs):
+    def options(self, **kwargs)->EntryRead:
         """
         define the GROUP BY, ORDER BY and LIMIT options of the query. 
+        
         Args:
             group (str, optional): the GROUP BY expression,
             order (str, optional): the ORDER BY expression,
             limit (int, optional): the value of LIMIT integer.         
+
         Returns:
-            ReadQuery: returns the instance
+            EntryRead: return the instance, allowing fluent coding.
         """
         
         if 'group' in kwargs: self._options['group'] = kwargs['group']
@@ -46,7 +56,7 @@ class ReadQuery(GQuery):
         
     def _build_options(self)->str:
         """
-        build the options part of the SELECT query (ORDER BY, GROUP BY, LIMIT)
+        build the options part of the SELECT query (ORDER BY, GROUP BY, LIMIT). this private method is called inside the build_query() method.
 
         Returns:
             str: the option string, ready to inject in the query
@@ -63,12 +73,12 @@ class ReadQuery(GQuery):
             
         return " ".join(parts)
     
-    def build_query(self):
+    def build_query(self)->EntryRead:
         """
-        build the SQLite SELECT query using the instance attributes.
+        build the SQLite Squery from the ReadQuery object.
 
         Returns:
-            str: the SQLite query, ready to use.
+            EntryRead: return instance, allowing fluent coding.
         """
         parts = []
                 

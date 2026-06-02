@@ -1,4 +1,4 @@
-
+### INSERT DOCUMENTATION ###
 
 def or_(a: str, b: str): return f"({a} OR {b})"
 

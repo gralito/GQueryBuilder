@@ -1,13 +1,13 @@
 import unittest
 
-from src.GQueryBuilder.updatequery import UpdateQuery
+from src.GQueryBuilder.equery.entryupdate import EntryUpdate
 
 
-class UpdateQueryTest(unittest.TestCase):
+class EntryUpdateTest(unittest.TestCase):
     
     def setUp(self):
         self.database = "/home/gralito/repos/GQueryBuilder/tests/test_db.sqlite"
-        self.query = UpdateQuery(self.database)
+        self.query = EntryUpdate(self.database)
         
     def test_simple_query(self):
         self.query.table(('posts',))

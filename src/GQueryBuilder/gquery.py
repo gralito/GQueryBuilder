@@ -1,53 +1,35 @@
-import sqlite3
-
-import src.GQueryBuilder.utils.dbtools as dbt
+from src.GQueryBuilder.utils.dbase import run as db_run
 
 
 class GQuery:
+    """
+    this class is the mother class of all query types (SELECT, UPDATE, ...).
     
-    def __init__(self, database):    
-        self._table: str = ""
-        self._where: str = ""
+    Attributes:
+        _query (str): the SQLite query sent to the database by the `run()` method.
+        database (str): the path to the working database.  
+    """
+    def __init__(self, database):       
         self._query = ""
         self.database = database
     
-    def table(self, *args: tuple[str, ...])->GQuery:
+    def _build_query(self, parts)->GQuery: 
         """
-        table: set the working table.
+        build the SQLite query from the parts provided by the subclass instance. called in the `build_query()` method of the subclass.
 
+        Args:
+            parts (str[]): the parts of the query in an array, sorted by the subclass method build_query().
         Returns:
-            GQuery: returns the instance.
-        """
-        result = []
-        for arg in args:
-            if len(arg) == 1:
-                result.append(arg[0])
-            else:
-                result.append(f"{arg[0]} as {arg[1]}")
-        self._table = ", ".join(result)
-        return self
-    
-    def where(self, condition: str)->GQuery:
-        self._where = "WHERE " + condition
-        return self
-    
-    def _build_query(self, parts)->str: 
-        """
-        build the SQLite3 query from the GQuery object.
-
-        Returns:
-            str: The SQLite3 query that can be send to any ORM.
+            GQuery: the instance, allowing fluent coding.
         """
         self._query = ' '.join(parts)
+        return self
     
-    def run(self, receive=False):
-        conn = sqlite3.connect(self.database)
-        cursor = conn.cursor()
-        try:
-            cursor.execute(self._query)
-            if receive:
-                return cursor.fetchall()
-            else:
-                conn.commit()
-        except:
-            conn.rollback()
+    def run(self, receive: bool = False)->str | None:
+        """
+        run the query to the database
+
+        Attributes:
+            receive (bool, optional): precise if data will be received or not. Defaults to False.
+        """
+        return db_run(self.database, self._query, receive)

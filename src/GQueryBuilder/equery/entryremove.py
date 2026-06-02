@@ -1,18 +1,18 @@
-from src.GQueryBuilder.gquery import GQuery
+from src.GQueryBuilder.equery.entryquery import EntryQuery
 
 
-class DeleteQuery(GQuery):
-    """Class used to generate a DELETE query"""
+class EntryRemove(EntryQuery):
+    """ this class represents a `DELETE` query. """
     
     def __init__(self, database):
         super().__init__(database)
     
-    def build_query(self)->str:
+    def build_query(self)->EntryRemove:
         """
-        build the SQLite DELETE query using the instance attributes.
+        build the SQLite query from the EntryRemove object.
 
         Returns:
-            str: the SQLite query, ready to use.
+            EntryRemove: return the instance, allowing fluent coding.
         """
         parts = ['DELETE']
         
