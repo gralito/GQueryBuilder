@@ -3,13 +3,9 @@ README.md
 pyproject.toml
 setup.py
 src/GQueryBuilder/__init__.py
-src/GQueryBuilder/createquery.py
-src/GQueryBuilder/db.py
-src/GQueryBuilder/deletequery.py
 src/GQueryBuilder/gquery.py
-src/GQueryBuilder/readquery.py
-src/GQueryBuilder/updatequery.py
 src/GQueryBuilder.egg-info/PKG-INFO
 src/GQueryBuilder.egg-info/SOURCES.txt
 src/GQueryBuilder.egg-info/dependency_links.txt
+src/GQueryBuilder.egg-info/requires.txt
 src/GQueryBuilder.egg-info/top_level.txt
